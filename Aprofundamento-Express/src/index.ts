@@ -3,6 +3,7 @@ import cors from "cors";
 import { Request, Response } from 'express';
 import { v4 as generateId } from 'uuid';
 import { todos } from "./data";
+import * as fs from 'fs';
 import { todo } from "node:test";
 import { error } from "node:console";
 import { forEachChild } from "typescript";
@@ -167,13 +168,75 @@ app.post('/createByUser/:id', (req: Request, res: Response) => {
 
 // EXERCÍCIO 10
 
+app.get('/selectandall', (req: Request, res: Response) => {
+    
+        try {
+            
+            const Id = req.query.id
+            const selectedTask:any = todos.filter((todo) => todo.userId === Id)
+            const othersTask = todos.filter((todo) => todo.userId !== Id)
 
+            const newTodos = todos.map((todo) => {
+                return {
+                   selectedUser: selectedTask,
+                   others: othersTask
+                }})
+                      
+            
+                
+            res.status(201).send(newTodos)
+               
+        } catch (error:any) {
+            res.status(404).end("Id not found.")
+        }
+    
+})
 
+// EXERCÍCIO 11
 
-
+app.post('/editOnTheSource', (req: Request, res: Response) => {
+    
+    try {
+        const taskTitle = req.body.title
+        
+        // Function to Add a new todo to the array "todos" 
+        function adicionarAfazer(novoAfazer:any) {
+            // Loading the File data.ts
+            const dataFilePath = '/Users/Othon/OneDrive/Área de Trabalho/Backend/Meus-Super-Projetos/Aprofundamento-Express/src/data.ts';
+            const data = require(dataFilePath);
+        
+            // Adding the new todo to the array "todos"
+            data.todos.push(novoAfazer);
+        
+            // Write the updated file back to disk
+            fs.writeFileSync(dataFilePath, `export const todos = ${JSON.stringify(data.todos, null, 2)};`, 'utf-8');
+        }
+        
+        const novoAfazer = {
+            userId: generateId(),
+            todo: [
+              {
+                "id": todo.length +1,
+                "title": taskTitle,
+                "completed": false
+              },
+              
+            ]
+          };
+  
+            adicionarAfazer(novoAfazer); 
+            res.status(201).send(novoAfazer) 
+           
+    } catch (error) {
+        res.status(404).end(error)
+    }   
+    
+});
 
 
 
 app.listen(3003, () => {
     console.log("Servidor Ok!")
 })
+
+//https://nodejs.dev/pt/learn/reading-files-with-nodejs
