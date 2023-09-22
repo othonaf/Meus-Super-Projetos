@@ -1,7 +1,7 @@
-import { v4 as generateId } from 'uuid';
-
-
-export const products = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.products = void 0;
+exports.products = [
     {
         id: "0be7dae9-1f8b-449f-ae52-c80f3d2aa7a8",
         name: "Nutella",
@@ -17,4 +17,4 @@ export const products = [
         name: "Pipoca",
         price: 2.00
     },
-]
+];
