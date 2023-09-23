@@ -65,11 +65,11 @@ app.get('/AllProducts', (req: Request, res: Response) => {
 */
 app.post('/editPrice', (req: Request, res: Response) => {
     try {
-        const productPrice = req.body.name
+        const productName = req.body.name
         const newPrice = req.body.price
-        const productToChange:any = products.find(element => element.name === productPrice)
+        const productToChange:any = products.find(element => element.name === productName)
 
-        if(!productPrice || !newPrice){
+        if(!productName || !newPrice){
             throw new Error("Product name and the new price are required!")
         }
 
@@ -89,7 +89,7 @@ app.post('/editPrice', (req: Request, res: Response) => {
 app.delete('/deleteProduct', (req: Request, res: Response) => {
     try {   
         const id = req.query.id
-        const itemToDelete:any = products.find(element => element.id === id)
+        const itemToDelete:any = products.findIndex(element => element.id === id)
         if(!id){
             throw new Error("Please, type an Id!")
         }
@@ -119,6 +119,7 @@ const Errors: {[key:string]:{ status:number, message:string }} = {
     DATA_INCONSISTENCE_NAME: {status:400, message: "Name must not be a number."},
     DATA_INCONSISTENCE_PRICE: {status:400, message: "Price must be a number."},
     PRICE_INCONSISTENCE: {status:400, message: "Price must be a number above zero."},
+    NOT_FOUND: {status:404, message: "Data not found."},
     UNEXPECTED: {status:500, message: "something unexpected happens."}
 }
 app.post('/exerciseRefatored', (req: Request, res: Response) => {
@@ -170,16 +171,119 @@ app.post('/exerciseRefatored', (req: Request, res: Response) => {
 })
 
 
+/* EXERCISE 08
+     Refactor the endpoint from exercise 5 (edit product) so that validation flows for received data (`price`) are implemented
 
+- error if `price` is not received
+- error if `price` is different from `number`
+- error if `price` is equal to or less than `0`
+- error if the product to be edited is not found
+- error if something unexpected happens
+*/
+app.post('/editPriceRefactored', (req: Request, res: Response) => {
+    try {
+        const {productName, newPrice} = req.body
+        
+        const productToChange = products.find(element => element.name === productName)
 
+        if(!productName || !newPrice){
+            throw new Error(Errors.MISSING_DATA.message)
+        }
+        if (typeof newPrice !== "number") {
+            throw new Error(Errors.DATA_INCONSISTENCE_PRICE.message)
+        }
+        if (newPrice <= 0) {
+            throw new Error(Errors.PRICE_INCONSISTENCE.message)
+        }
+        if (!productToChange) {
+            throw new Error(Errors.NOT_FOUND.message)
+        }
+        productToChange.price = newPrice
+        res.status(201).send(products)
 
+        
+    } catch (error:any) {
+        switch (error.message) {
+            case Errors.MISSING_DATA.message:
+                res.status(Errors.MISSING_DATA.status).send(Errors.MISSING_DATA.message)
+                break;
+            case Errors.DATA_INCONSISTENCE_PRICE.message:
+                res.status(Errors.DATA_INCONSISTENCE_PRICE.status).send(Errors.DATA_INCONSISTENCE_PRICE.message)
+                break;
+            case Errors.PRICE_INCONSISTENCE.message:
+                    res.status(Errors.PRICE_INCONSISTENCE.status).send(Errors.PRICE_INCONSISTENCE.message)
+                    break;    
+            case Errors.DATA_INCONSISTENCE_NAME.message:
+                    res.status(Errors.NOT_FOUND.status).send(Errors.NOT_FOUND.message)
+                    break;        
+            default:
+                res.status(Errors.UNEXPECTED.status).send(Errors.UNEXPECTED.message)
+                break;
+           }
+    }
+})
 
+/* EXERCISE 09
+     Refactor the endpoint from exercise 6 (delete product) so that validation flows for received data are implemented:
 
+- error if the chosen product is not found
+- error if something unexpected happens.
+*/
+app.delete('/deleteProductRefatored', (req: Request, res: Response) => {
+    try {   
+        const id = req.query.id
+        const itemToDelete:any = products.findIndex(element => element.id === id)
+        
+        if(!id){
+            throw new Error(Errors.MISSING_DATA.message)
+        }        
+        if( id !== itemToDelete){
+            throw new Error(Errors.NOT_FOUND.message)
+        }
 
+        if (itemToDelete !== -1){
+        const updatedProducts = products.splice(itemToDelete, 1)
+        res.status(201).send(updatedProducts)
+    }   
+        
+    } catch (error:any) {
+        switch (error.message) {
+            case Errors.MISSING_DATA.message:
+                res.status(Errors.MISSING_DATA.status).send(Errors.MISSING_DATA.message)
+                break;
+            case Errors.NOT_FOUND.message:
+                res.status(Errors.NOT_FOUND.status).send(Errors.NOT_FOUND.message)
+                break;
+            default:
+                res.status(Errors.UNEXPECTED.status).send(Errors.UNEXPECTED.message)
+                break;
+           }
+    }
+})
 
+/* EXERCISE 10
+    Implement the following logic in the exercise 4 endpoint:
 
+- the endpoint returns all products by default, but if a valid `“search”` query is received, the search result by product name is returned
+     - for the query to be valid, it must not be `undefined`
+*/
+app.get('/searchProduct', (req: Request, res: Response) => {
+    try {
+        const {productName} = req.query
+        const selectedProduct = products.find(product => product.name === productName)
 
-
+        if(productName !== undefined){
+            res.status(200).send(selectedProduct)
+        }
+        else {
+            res.status(200).send(products)
+        }
+        
+    } catch (error:any) {
+        res.status(404).send("Something is not right :(")
+    }
+    
+})
 
 
 
