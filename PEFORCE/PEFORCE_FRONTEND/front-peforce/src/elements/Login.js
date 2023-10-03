@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await api.post('/login', { username, password });
+      const response = await api.post('/efetua/login', { username, password });
       const { token } = response.data;
       localStorage.setItem('token', token);
       navigate('/SelecionaCaminho');

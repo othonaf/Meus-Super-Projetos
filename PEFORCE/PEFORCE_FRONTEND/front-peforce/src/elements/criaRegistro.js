@@ -20,7 +20,7 @@ const CadastroCliente = () => {
       const headers = { Authorization: `Bearer ${token}` };
       const data = { nome, email, cpf, renda, telefone, data_criacao };
 
-      const response = await api.post('/inserirRegistro', data, { headers });
+      const response = await api.post('/inserir/Registro', data, { headers });
       setMensagem(response.data); 
     } catch (error) {
       setMensagem('Erro ao cadastrar cliente:', error);

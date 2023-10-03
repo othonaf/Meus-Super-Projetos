@@ -8,7 +8,7 @@ function RecebeRegistro() {
 
   useEffect(() => {
     
-    fetch('http://localhost:3003/recebeRegistro')
+    fetch('http://localhost:3003/visualiza/Registros')
       .then((response) => response.json())
       .then((data) => {
         setData(data);

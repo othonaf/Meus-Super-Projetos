@@ -8,7 +8,7 @@ function DeletaRegistro() {
     // Obtenha o token de uma fonte segura
     const token = getSecureToken();
 
-    fetch(`http://localhost:3003/registro/${id}`, {
+    fetch(`http://localhost:3003/delete/registro/${id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `${token}`,
