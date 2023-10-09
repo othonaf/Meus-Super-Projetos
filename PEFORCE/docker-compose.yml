@@ -1,0 +1,22 @@
+version: '3'
+services:
+  backend:
+    build: 
+      context: ./API_PEFORCE_BACKEND
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"
+    depends_on: 
+      - db
+  frontend:
+    build: 
+      context: ./PEFORCE_FRONTEND
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+  db:
+    build: 
+      context: ./BancoDeDados
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
