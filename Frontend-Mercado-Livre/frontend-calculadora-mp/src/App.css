@@ -1,0 +1,62 @@
+.Header {
+  background-color: #fff;
+  font-family: "Proxima Nova",-apple-system,Roboto,Arial,sans-serif,sans-serif;
+  color: #1282b3;
+ 
+}
+.navbar-brand {
+  color: #1282b3 !important;
+}
+
+.Titulo3 {
+  font-size: 18px !important;
+}
+.Titulo4 {
+  font-size: 18px !important;
+}
+.App {
+   background-color: #1282b3;
+   
+}
+
+/* Estilos para telas pequenas (dispositivos móveis) */
+@media (max-width: 768px) {
+  input[type="number"] {
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0;
+  }
+
+}
+
+.Button {
+  background-color:#fafbfc;
+  font-family: "Proxima Nova",-apple-system,Roboto,Arial,sans-serif,sans-serif;
+  color: #1282b3;
+
+}
+.Resultado {
+    font-family: "Proxima Nova",-apple-system,Roboto,Arial,sans-serif,sans-serif;
+    color: #ffffff;
+    font-size: 22px !important;
+}
+
+.Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+    background-color: #1282b3;
+    font-family: "Proxima Nova",-apple-system,Roboto,Arial,sans-serif,sans-serif;
+    color: #ffffff
+}
+
+.Footer {
+  
+  background-color: #fff;
+  font-family: "Proxima Nova",-apple-system,Roboto,Arial,sans-serif,sans-serif;
+  color: #1282b3;
+  text-align: center;
+}
