@@ -90,9 +90,8 @@ Refere-se a 'volume', indica o início do comando para criar o volume.
 
 #   PARA CRIAR A REDE INTERNA NO DOCKER:
 ```bash
-
+        $ docker network create **nome-da-rede**
 ```
-*docker network create **nome-da-rede***
 
 #   PARA INCLUIR O CONTAINER NA NOVA REDE CRIADA:
 ```bash
