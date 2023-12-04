@@ -1,0 +1,38 @@
+{
+    "navbar": {
+        "start": "Iniciar",
+        "aboutMe": "Sobre mim",
+        "worksAndExperiences": "Trabalhos e Experiências",
+        "contact": "Contato",
+        "curriculum": "Currículo"
+    },
+    "console": {
+        "texto": "Formado em Análise e Desenvolvimento de Sistemas pela Fatene desde 2017 e especializado em programação Fullstack pela Labenu. Desde 2021, venho construindo APIs REST no Backend com foco em Node.JS, TypeScript, Express.JS, Knex.JS e PostgreSQL, além de utilizar React.JS no Frontend. No meu último contrato também tive experiência com ferramentas como: Datadog, Kibana Elastic e Google Cloud Platform. Minha ambição profissional é avançar em minha carreira como Desenvolvedor Backend e Frontend.",
+        "console3": "Sobre mim:"
+    },
+    "content": {
+        "ola": "Olá, eu sou o Othon",
+        "titulo": "Desenvolvedor Fullstack [Backend && Frontend]",
+        "skills": "Minhas Skills"
+    },
+    "contato": {
+        "redes": "Redes Sociais:"
+    },
+    "projetos": {
+        "tituloCard1": "Calculadora de Taxas Mercado Pago",
+        "descCard1": "Uma aplicação que calcula com precisão o valor que deve ser cobrado na maquininha do Mercado Pago, caso o cliente queira parcelar uma compra no crédito.",
+        "botao": "Conferir"
+    },
+    "trabalhos": {
+        "titulo": "Educação e Experiência",
+        "detalheCard1": "Cursei Análise e Desenvolvimento de Sistemas na Faculdade de Tecnologia do Nordeste (Fatene)",
+        "detalheCard2": "Certificação em Programação Fullstack",
+        "detalheCard3": "Trabalhei na Hapvida Notre Dame.",
+        "detalheCard4": "Atuei na Ame Digital, uma empresa do grupo Americanas (B2W).",
+        "card5Titulo": "2023 - Momento",
+        "detalheCard5": "Atuo como Programador Web Fullstack Freelancer.",
+        "titulo2": "Projetos Realizados:",
+        "botão": "Voltar"
+
+    }
+}
