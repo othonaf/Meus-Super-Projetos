@@ -1,0 +1,38 @@
+{
+    "navbar": {
+        "start": "Start",
+        "aboutMe": "About me",
+        "worksAndExperiences": "Works and Experiences",
+        "contact": "Contact",
+        "curriculum": "Curriculum"
+    },
+    "console": {
+        "texto": "Graduated in Systems Analysis and Development from Fatene since 2017 and specialized in Fullstack programming from Labenu. Since 2021, I have been building REST APIs on the Backend with a focus on Node.JS, TypeScript, Express.JS, Knex.JS and PostgreSQL, as well as using React.JS on the Frontend. In my last contract I also had experience with tools such as: Datadog, Kibana Elastic and Google Cloud Platform. My professional ambition is to advance my career as a Backend and Frontend Developer.",
+        "console3": "About me:"
+    },
+    "content": {
+        "ola": "Hi, I am Othon",
+        "titulo": "Fullstack Developer [Backend && Frontend]",
+        "skills": "My Skills"
+    },
+    "contato": {
+        "redes": "Social media:"
+    },
+    "projetos": {
+        "tituloCard1": "Mercado Pago Fee Calculator",
+        "descCard1": "An application that accurately calculates the amount that must be charged on the Mercado Pago machine, if the customer wants to pay in installments for a purchase on credit.",
+        "botao": "Check"
+    },
+    "trabalhos": {
+        "titulo": "Education and Experience",
+        "detalheCard1": "I studied Systems Analysis and Development at the Faculty of Technology of the Northeast (Fatene)",
+        "detalheCard2": "Fullstack Programming Certification",
+        "detalheCard3": "I worked at Hapvida Notre Dame.",
+        "detalheCard4": "I worked at Ame Digital, a company in the Americanas group (B2W).",
+        "card5Titulo": "2023 - Moment",
+        "detalheCard5": "I work as a Freelance Fullstack Web Programmer.",
+        "titulo2": "Projects carried out:",
+        "botão": "Back"
+
+    }
+}
