@@ -11,7 +11,9 @@ Exemplo:
 
  3º: Na raiz do Projeto local criar o arquivo "Procfile" com o comando:
                         
-                        web: npm start
+```bash
+        $ echo 'web: npm start' > Procfile
+```
 
  4º: No arquivo "package.json", na seção "scripts" configurar o arquivo assim:
 
