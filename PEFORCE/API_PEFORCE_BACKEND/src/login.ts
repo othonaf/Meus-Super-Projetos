@@ -12,6 +12,11 @@ const router = express.Router();
 */
 router.post('/login', async (req:Request, res:Response) => {
     const { username, password } = req.body;
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+      throw new Error('JWT_Secret não definido');
+      
+    }
   
     try {
           const result = await connection.raw(`
@@ -30,7 +35,7 @@ router.post('/login', async (req:Request, res:Response) => {
         return res.status(401).json({ message: 'Senha incorreta' });
       }
   
-      const token = jwt.sign({ username: user.username, profile: user.profile }, 'f1#z8.sqt', {
+      const token = jwt.sign({ username: user.username, profile: user.profile }, secret, {
         expiresIn: '2h', algorithm: 'HS256'
       });
       
