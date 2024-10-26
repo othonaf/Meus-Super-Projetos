@@ -3,13 +3,13 @@
 * Comando para iniciar o package.json:
 
 ```bash
-    $ npm init -y
+    npm init -y
 ```
 
 * Comando para criar o arquivo "tsconfig.json":
 
 ```bash
-    $ echo '{
+    echo '{
     "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./build",
